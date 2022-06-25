@@ -8,7 +8,7 @@ export interface ActionType {
 
 export type DispatchType = (action: ActionType) => ActionType;
 
-export interface ReduxState {
+export interface RootState {
     robots: RobotsState;
     cart: CartState;
 }
