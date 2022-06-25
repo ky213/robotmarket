@@ -3,7 +3,7 @@ import promiseMiddleware from "redux-promise-middleware";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import rootReducer from "store/reducers/root.reducer";
+import rootReducer from "./reducers/root.reducer";
 import { RootState } from "./models/redux.model";
 
 const defaultMiddlewares = [thunkMiddleware, promiseMiddleware];
