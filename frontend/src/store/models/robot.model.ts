@@ -27,7 +27,7 @@ export interface Robot {
 
 export interface RobotsState {
     robots: Robot[];
-    currentRobot: Robot
+    currentRobot: Robot | null
     loading: boolean;
     error: string | null;
     
