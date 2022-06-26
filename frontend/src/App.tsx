@@ -37,7 +37,7 @@ function App() {
       <Grid container spacing={2} alignItems="center">
         {robotsList.filter(filterRobots).map((robot: Robot) => (
           <Grid item xs={3} key={robot.name}>
-            <RobotCard {...robot} />
+            <RobotCard robot={robot} />
           </Grid>
         ))}
       </Grid>
