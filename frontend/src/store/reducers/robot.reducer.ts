@@ -1,6 +1,6 @@
 import { ActionType } from "store/models/redux.model";
 import { Robot, RobotsState } from "store/models/robot.model";
-import { GET_ROBOTS, RESET } from "store/actions/robot.actions";
+import { GET_ROBOTS, RESET_ROBOTS } from "store/actions/robot.actions";
 import { REQUEST, SUCCESS, FAILURE } from "utils/redux.utils";
 
 const initialState: RobotsState = {
@@ -30,7 +30,7 @@ export default (state = initialState, action: ActionType) => {
         loading: false,
         error: action.payload,
       };
-    case RESET:
+    case RESET_ROBOTS:
       return {
         ...initialState,
       };

@@ -15,14 +15,12 @@ export type RobotMaterial =
 export type FilterMaterial = 'all' | RobotMaterial;
 
 export interface Robot {
-    id: string;
     name: string;
     price: string;
     material: RobotMaterial;
     stock: number;
-    remainingStock: number;
     image: string;
-    createdAt: Date;
+    createdAt: string;
 }
 
 export interface RobotsState {
