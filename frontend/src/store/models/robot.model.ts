@@ -12,7 +12,7 @@ export type RobotMaterial =
 | 'Metal'
 | 'Frozen';
 
-export type FilterMaterial = 'all' | RobotMaterial;
+export type FilterMaterial = 'All' | RobotMaterial;
 
 export interface Robot {
     name: string;
@@ -25,6 +25,7 @@ export interface Robot {
 
 export interface RobotsState {
     robotsList: Robot[];
+    filter: FilterMaterial;
     currentRobot: Robot | null
     loading: boolean;
     error: string | null;

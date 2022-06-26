@@ -1,10 +1,11 @@
 import { ActionType } from "store/models/redux.model";
 import { Robot, RobotsState } from "store/models/robot.model";
-import { GET_ROBOTS, RESET_ROBOTS } from "store/actions/robot.actions";
+import { FILTER_ROBOTS, GET_ROBOTS, RESET_ROBOTS } from "store/actions/robot.actions";
 import { REQUEST, SUCCESS, FAILURE } from "utils/redux.utils";
 
 const initialState: RobotsState = {
   robotsList: [],
+  filter: "All",
   currentRobot: null,
   loading: false,
   error: null,
@@ -29,6 +30,11 @@ export default (state = initialState, action: ActionType) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+    case FILTER_ROBOTS:
+      return {
+        ...state,
+        filter: action.payload,
       };
     case RESET_ROBOTS:
       return {

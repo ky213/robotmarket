@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, Grid } from "@mui/material";
 
 import axios from "config/axios";
-import { RobotCard, TopBar } from "components";
+import { FilterRobots, RobotCard, TopBar } from "components";
 import { GET_ROBOTS, RESET_ROBOTS } from "store/actions/robot.actions";
 import { RootState } from "store/models/redux.model";
 import { Robot } from "store/models/robot.model";
 
 function App() {
   const dispatch = useDispatch();
-  const { robotsList } = useSelector((state: RootState) => state.robots);
+  const { robotsList, filter } = useSelector((state: RootState) => state.robots);
 
   useEffect(() => {
     dispatch({
@@ -25,21 +25,19 @@ function App() {
     };
   }, []);
 
+  const filterRobots = (robot: Robot) => {
+    if (filter === "All") return robot;
+    else if (robot.material === filter) return robot;
+  };
+
   return (
     <Container maxWidth="xl">
       <TopBar />
-      <Grid container spacing={2} alignItems='center' style={{marginTop: '20px'}}>
-        {robotsList.map((robot: Robot) => (
-          <Grid item xs={3}>
-            <RobotCard
-              key={robot.name}
-              name={robot.name}
-              image={robot.image}
-              stock={robot.stock}
-              price={robot.price}
-              createdAt={robot.createdAt}
-              material={robot.material}
-            />
+      <FilterRobots />
+      <Grid container spacing={2} alignItems="center">
+        {robotsList.filter(filterRobots).map((robot: Robot) => (
+          <Grid item xs={3} key={robot.name}>
+            <RobotCard {...robot} />
           </Grid>
         ))}
       </Grid>
