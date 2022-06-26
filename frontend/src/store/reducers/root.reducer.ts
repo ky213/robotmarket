@@ -4,8 +4,9 @@ import { RootState } from "store/models/redux.model";
 import robotsReducer from "store/reducers/robot.reducer";
 import cartReducer from "store/reducers/cart.reducer";
 
-export default () =>
-  combineReducers<RootState>({
-    robots: robotsReducer,
-    cart: cartReducer,
-  });
+const rootReducer = combineReducers<RootState>({
+  robots: robotsReducer,
+  cart: cartReducer,
+});
+
+export default rootReducer;
