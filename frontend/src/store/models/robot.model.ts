@@ -26,7 +26,7 @@ export interface Robot {
 }
 
 export interface RobotsState {
-    robots: Robot[];
+    robotsList: Robot[];
     currentRobot: Robot | null
     loading: boolean;
     error: string | null;

@@ -4,7 +4,7 @@ import { GET_ROBOTS, RESET } from "store/actions/robot.actions";
 import { REQUEST, SUCCESS, FAILURE } from "utils/redux.utils";
 
 const initialState: RobotsState = {
-  robots: [],
+  robotsList: [],
   currentRobot: null,
   loading: false,
   error: null,
@@ -22,7 +22,7 @@ export default (state = initialState, action: ActionType) => {
       return {
         ...state,
         loading: false,
-        robots: action.payload,
+        robotsList: action.payload.data.data,
       };
     case FAILURE(GET_ROBOTS):
       return {
