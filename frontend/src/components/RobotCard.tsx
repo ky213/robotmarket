@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import { Robot } from "store/models/robot.model";
 import { DATE_FORMAT } from "config/constants";
 import { ADD_ROBOT } from "store/actions/cart.actions";
+import { SET_ALERT } from "store/actions/global.actions";
 import { RootState } from "store/models/redux.model";
 
 export interface RobotCardProps extends ComponentProps<any> {
@@ -34,16 +35,27 @@ export default function RobotCard({ robot }: RobotCardProps) {
   };
 
   const handleAddToCart = () => {
+    if (items.length === 5) {
+      dispatch({
+        type: SET_ALERT,
+        payload: {
+          message: "Sorry, it's not possible to add more than 5 robot type.",
+          type: "error",
+        },
+      });
+      return
+    }
+
     dispatch({
       type: ADD_ROBOT,
       payload: robot,
     });
   };
 
-    useEffect(() => {
-      remaininRobots()
-    })
-    
+  useEffect(() => {
+    remaininRobots();
+  });
+
   return (
     <Paper elevation={5}>
       <Card sx={{ maxWidth: 345 }}>

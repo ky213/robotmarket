@@ -1,7 +1,6 @@
 import { ActionType } from "store/models/redux.model";
 import { CartState } from "store/models/cart.model";
-import { ADD_ROBOT, GET_CART, RESET } from "store/actions/cart.actions";
-import { REQUEST, SUCCESS, FAILURE } from "utils/redux.utils";
+import { ADD_ROBOT, RESET } from "store/actions/cart.actions";
 
 const initialState: CartState = {
   items: [],
@@ -12,24 +11,6 @@ const initialState: CartState = {
 
 export default (state = initialState, action: ActionType) => {
   switch (action.type) {
-    case REQUEST(GET_CART):
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
-    case SUCCESS(GET_CART):
-      return {
-        ...state,
-        loading: false,
-        items: action.payload,
-      };
-    case FAILURE(GET_CART):
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
     case ADD_ROBOT:
       const robot = state.items.find(({ name }) => name === action.payload.name);
       let items = [...state.items];

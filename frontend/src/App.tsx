@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, Grid } from "@mui/material";
 
 import axios from "config/axios";
-import { FilterRobots, RobotCard, TopBar } from "components";
+import { FilterRobots, RobotCard, TopBar, Alert } from "components";
 import { GET_ROBOTS, RESET_ROBOTS } from "store/actions/robot.actions";
 import { RootState } from "store/models/redux.model";
 import { Robot } from "store/models/robot.model";
@@ -33,6 +33,7 @@ function App() {
   return (
     <Container maxWidth="xl">
       <TopBar />
+      <Alert/>
       <FilterRobots />
       <Grid container spacing={2} alignItems="center">
         {robotsList.filter(filterRobots).map((robot: Robot) => (
