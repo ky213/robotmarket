@@ -39,7 +39,7 @@ export default function RobotCard({ robot }: RobotCardProps) {
       dispatch({
         type: SET_ALERT,
         payload: {
-          message: "Sorry, it's not possible to add more than 5 robot type.",
+          message: "Sorry, it's not possible to add more than 5 robot types.",
           type: "error",
         },
       });
